@@ -3,13 +3,13 @@
 	"tasks": [
 		{
 			"type": "embedded-debug.flash",
-			//"deviceName": "${command:device-manager.getDeviceName}",
-			"deviceName": "MICROBIT",
+			"deviceName": "${command:device-manager.getDeviceName}",
+			//"deviceName": "nRF52833",
 			"serialNumber": "${command:device-manager.getSerialNumber}",
 			"program": "C:/Users/Nick/Source/discovery/microbit/target/thumbv7em-none-eabihf/debug/led-roulette",
 			//"program": "${command:embedded-debug.getApplicationFile}",
-			//"cmsisPack": "https://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_BLE/NordicSemiconductor.nRF_BLE.3.1.0.pack",
-			"cmsisPack": "C:/Users/Nick/Downloads/NordicSemiconductor.nRF_BLE.3.1.0.pack",
+			"cmsisPack": "https://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_BLE/NordicSemiconductor.nRF_BLE.3.1.0.pack",
+			"processorName": "cm4",
 			"problemMatcher": [],
 			"label": "embedded-debug.flash: Flash Device",
 			"group": {
