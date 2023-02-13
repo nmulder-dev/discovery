@@ -4,6 +4,7 @@
 use cortex_m_rt::entry;
 use rtt_target::rtt_init_print;
 use panic_rtt_target as _;
+use core::fmt::Write;
 
 #[cfg(feature = "v1")]
 use microbit::{
@@ -50,7 +51,7 @@ fn main() -> ! {
         UartePort::new(serial)
     };
 
-    nb::block!(serial.write(b'X')).unwrap();
+    write!(serial, "This is a test!").unwrap();
     nb::block!(serial.flush()).unwrap();
 
     loop {}
