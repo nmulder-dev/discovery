@@ -2,7 +2,8 @@
 #![no_std]
 
 use cortex_m_rt::entry;
-use rtt_target::rtt_init_print;
+use heapless::Vec;
+use rtt_target::{rtt_init_print, rprintln};
 use panic_rtt_target as _;
 use core::fmt::Write;
 
@@ -51,8 +52,13 @@ fn main() -> ! {
         UartePort::new(serial)
     };
 
-    write!(serial, "This is a test!").unwrap();
-    nb::block!(serial.flush()).unwrap();
+    let mut buffer: Vec<u8, 32> = Vec::new();
 
-    loop {}
+    loop {
+        buffer.clear();
+        
+        buffer.push(nb::block!(serial.read()).unwrap());
+
+        write!(serial, buffer.str());
+    }
 }
